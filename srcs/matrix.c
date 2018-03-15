@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 11:44:06 by nobrien           #+#    #+#             */
-/*   Updated: 2018/03/14 18:29:03 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/03/15 15:29:10 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	identity_matrix(float mat[4][4])
 
 void	mult_matrix(t_world *world, float mat[4][4])
 {
-	float x;
-	float y;
-	float z;
+	float	x;
+	float	y;
+	float	z;
 	t_point *h;
 
 	h = world->point_lst;
@@ -49,7 +49,7 @@ void	mult_matrix(t_world *world, float mat[4][4])
 		h->y = x * mat[0][1] + y * mat[1][1] + z * mat[2][1] + mat[3][1];
 		h->z = x * mat[0][2] + y * mat[1][2] + z * mat[2][2] + mat[3][2];
 		h = h->next;
-    }
+	}
 }
 
 void	set_mat(t_world *world)

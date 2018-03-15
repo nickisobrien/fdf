@@ -6,68 +6,37 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 11:25:58 by nobrien           #+#    #+#             */
-/*   Updated: 2018/03/15 11:30:12 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/03/15 16:28:56 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-void		get_wh(t_world *world)
+void		read_file(t_world *w)
 {
-	t_point *head;
-	int maxX;
-	int maxY;
-
-	maxY = -2147483648;
-	maxX = -2147483648;
-	head = world->point_lst;
-	while (head)
-	{
-		if (head->x > maxX)
-			maxX = head->x;
-		if (head->y > maxY)
-			maxY = head->y;
-		head = head->next;
-	}
-	maxX++;
-	maxY++;
-	world->cols = maxX;
-	world->rows = maxY;
-}
-
-void	read_file(t_world *world)
-{
-	char *str;
-	int line;
-	int col;
+	char	*s;
 	t_point *head;
 	t_point *new_point;
 	t_point *trav;
 
 	head = init_point(0, 0, 0, 0);
-	world->point_lst = head;
-	line = 0;
-	while ((get_next_line(world->fd, &str) > 0))
-	{
-		col = 0;
-		while (*str)
+	w->point_lst = head;
+	w->rows = -1;
+	while ((get_next_line(w->fd, &s) > 0) && ++(w->rows) >= 0 && !(w->cols = 0))
+		while (*s)
 		{
-			if (ft_isdigit(*str) || *str == '-')
+			if ((ft_isdigit(*s) || *s == '-') && (trav = head))
 			{
-				new_point = init_point(col, line, ft_atoi(str), 0);
-				trav = head;
+				new_point = init_point(w->cols++, w->rows, ft_atoi(s), 0);
 				while (trav->next)
 					trav = trav->next;
 				trav->next = new_point;
-
-				while (ft_isdigit(*(str + 1)) || *(str + 1) == '-')
-					str++;
-				col++;
+				while (*(s + 1) == '-' || ft_isalnum(*(s + 1))
+					|| *(s + 1) == ',')
+					s++;
 			}
-			str++;
+			s++;
 		}
-		line++;
-	}
-	world->point_lst = head->next;
+	w->point_lst = w->point_lst->next + (w->rows++ * 0);
 	free(head);
 }

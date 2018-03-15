@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 11:27:20 by nobrien           #+#    #+#             */
-/*   Updated: 2018/03/15 11:30:13 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/03/15 14:56:28 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	set_scale(t_world *world)
 {
-	t_point *h;
-	int max;
+	t_point	*h;
+	int		max;
 
 	h = world->point_lst;
 	max = (world->rows > world->cols) ? world->rows : world->cols;
@@ -47,8 +47,10 @@ void	project(t_world *world)
 	{
 		if (!(h->z))
 			h->z = 1;
-		h->x = ((100 * (h->x-world->wwidth / 2)) / (100 + h->z)) + world->wwidth / 2;
-		h->y = ((100 * (h->y-world->wheight / 2)) / (100 + h->z)) + world->wheight / 2;
+		h->x = ((100 * (h->x - world->wwidth / 2)) /
+			(100 + h->z)) + world->wwidth / 2;
+		h->y = ((100 * (h->y - world->wheight / 2)) /
+			(100 + h->z)) + world->wheight / 2;
 		h = h->next;
 	}
 }
@@ -68,11 +70,11 @@ void	move(t_world *world, int xadj, int yadj)
 
 void	center(t_world *world)
 {
-	t_point *h;
-	int xlow;
-	int xhigh;
-	int ylow;
-	int yhigh;
+	t_point	*h;
+	int		xlow;
+	int		xhigh;
+	int		ylow;
+	int		yhigh;
 
 	h = world->point_lst;
 	xlow = h->x;
@@ -91,5 +93,6 @@ void	center(t_world *world)
 			ylow = h->y;
 		h = h->next;
 	}
-	move(world, (world->wwidth / 2) - ((xlow + xhigh) / 2), (world->wheight / 2) - ((ylow + yhigh) / 2));
+	move(world, (world->wwidth / 2) - ((xlow + xhigh) / 2),
+		(world->wheight / 2) - ((ylow + yhigh) / 2));
 }

@@ -6,25 +6,25 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 11:52:31 by nobrien           #+#    #+#             */
-/*   Updated: 2018/03/15 11:27:45 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/03/15 16:37:11 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-void	init_cam(t_world *world)
+void		init_cam(t_world *world)
 {
-	world->rx = 0.0;
-	world->ry = 0.0;
-	world->rz = 0.0;
+	world->rx = 0.3;
+	world->ry = 0.3;
+	world->rz = 0.3;
 }
 
-void	init_array(t_world *world)
+void		init_array(t_world *world)
 {
 	t_point **arr;
 	t_point *h;
-	int i;
-	int j;
+	int		i;
+	int		j;
 
 	h = world->point_lst;
 	if (!(arr = malloc(sizeof(t_point *) * world->rows + 1)))
@@ -49,6 +49,7 @@ void	init_array(t_world *world)
 t_point		*init_point(int x, int y, int z, int color)
 {
 	t_point *point;
+
 	point = malloc(sizeof(t_point));
 	point->x = x;
 	point->y = y;

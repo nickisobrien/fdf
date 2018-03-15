@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 11:47:14 by nobrien           #+#    #+#             */
-/*   Updated: 2018/03/14 18:40:10 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/03/15 14:50:28 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 
 void	ft_close(t_world *world)
 {
-	free(world);
+	(void)world;
 	exit(0);
-	return ;
+}
+
+void	ft_error(t_world *world)
+{
+	(void)world;
+	ft_putendl("error: invalid file");
+	exit(0);
 }
