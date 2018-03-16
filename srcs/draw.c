@@ -6,13 +6,13 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 11:37:06 by nobrien           #+#    #+#             */
-/*   Updated: 2018/03/15 15:37:28 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/03/15 16:57:08 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-void	bresenham_x(t_world *world, t_point a, t_point b, int colored)
+void	bresenham_x(t_world *world, t_point a, t_point b)
 {
 	int m_new;
 	int slope_error_new;
@@ -29,7 +29,7 @@ void	bresenham_x(t_world *world, t_point a, t_point b, int colored)
 	y = a.y;
 	while (x <= b.x)
 	{
-		if (colored)
+		if (a.colored || b.colored)
 			mlx_pixel_put(world->mlx, world->window, x, y, 0xffffff);
 		else
 			mlx_pixel_put(world->mlx, world->window, x, y, 0x2eff05);
@@ -41,7 +41,7 @@ void	bresenham_x(t_world *world, t_point a, t_point b, int colored)
 	}
 }
 
-void	bresenham_y(t_world *world, t_point a, t_point b, int colored)
+void	bresenham_y(t_world *world, t_point a, t_point b)
 {
 	int m_new;
 	int slope_error_new;
@@ -58,7 +58,7 @@ void	bresenham_y(t_world *world, t_point a, t_point b, int colored)
 	y = a.y;
 	while (y <= b.y)
 	{
-		if (colored)
+		if (a.colored || b.colored)
 			mlx_pixel_put(world->mlx, world->window, x, y, 0xffffff);
 		else
 			mlx_pixel_put(world->mlx, world->window, x, y, 0x2eff05);
@@ -83,7 +83,7 @@ void	bresenham_xfilter(t_world *world, t_point a, t_point b)
 	if (b.x < a.x)
 		bresenham_xfilter(world, b, a);
 	else
-		bresenham_x(world, a, b, (a.colored || b.colored));
+		bresenham_x(world, a, b);
 }
 
 void	bresenham_yfilter(t_world *world, t_point a, t_point b)
@@ -99,7 +99,7 @@ void	bresenham_yfilter(t_world *world, t_point a, t_point b)
 	if (b.y < a.y)
 		bresenham_yfilter(world, b, a);
 	else
-		bresenham_y(world, a, b, (a.colored || b.colored));
+		bresenham_y(world, a, b);
 }
 
 void	draw(t_world *world)

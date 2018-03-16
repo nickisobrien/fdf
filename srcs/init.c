@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 11:52:31 by nobrien           #+#    #+#             */
-/*   Updated: 2018/03/15 16:37:11 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/03/15 17:55:55 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,30 @@
 
 void		init_cam(t_world *world)
 {
-	world->rx = 0.3;
-	world->ry = 0.3;
-	world->rz = 0.3;
+	world->rx = 0.0;
+	world->ry = 0.0;
+	world->rz = 0.0;
+}
+
+void		update_array(t_world *world)
+{
+	t_point *h;
+	int		i;
+	int		j;
+
+	h = world->point_lst;
+	i = 0;
+	while (i < world->rows)
+	{
+		j = 0;
+		while (j < world->cols)
+		{
+			world->arr[i][j] = *h;
+			j++;
+			h = h->next;
+		}
+		i++;
+	}
 }
 
 void		init_array(t_world *world)
@@ -28,12 +49,12 @@ void		init_array(t_world *world)
 
 	h = world->point_lst;
 	if (!(arr = malloc(sizeof(t_point *) * world->rows + 1)))
-		ft_close(world);
+		ft_close();
 	i = 0;
 	while (i < world->rows)
 	{
 		if (!(arr[i] = malloc(sizeof(t_point) * world->cols + 1)))
-			ft_close(world);
+			ft_close();
 		j = 0;
 		while (j < world->cols)
 		{

@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 17:12:25 by nobrien           #+#    #+#             */
-/*   Updated: 2018/03/15 16:31:23 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/03/15 17:50:39 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,16 @@ typedef struct		s_world
 	float			rz;
 }					t_world;
 
-void				ft_close(t_world *world);
-void				ft_error(t_world *world);
+void				ft_close(void);
+void				ft_error(void);
+void				ft_usage(void);
 
 void				mult_matrix(t_world *world, float mat[4][4]);
 void				identity_matrix(float mat[4][4]);
 void				set_mat(t_world *world);
 
-void				bresenham_x(t_world *world, t_point a,
-	t_point b, int colored);
-void				bresenham_y(t_world *world, t_point a,
-	t_point b, int colored);
+void				bresenham_x(t_world *world, t_point a, t_point b);
+void				bresenham_y(t_world *world, t_point a, t_point b);
 void				bresenham_xfilter(t_world *world, t_point a, t_point b);
 void				bresenham_yfilter(t_world *world, t_point a, t_point b);
 void				draw(t_world *world);
@@ -72,6 +71,7 @@ int					key_pressed_hook(int key, t_world *world);
 void				init_cam(t_world *world);
 void				init_array(t_world *world);
 t_point				*init_point(int x, int y, int z, int color);
+void				update_array(t_world *world);
 
 void				new_img(t_world *world);
 
