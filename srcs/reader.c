@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 11:25:58 by nobrien           #+#    #+#             */
-/*   Updated: 2018/03/15 18:11:43 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/03/16 13:27:54 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void		read_file(t_world *w)
 {
 	char	*s;
+	char	*ptr;
 	t_point *head;
 	t_point *new_point;
 	t_point *trav;
@@ -23,6 +24,8 @@ void		read_file(t_world *w)
 	w->point_lst = head;
 	w->rows = -1;
 	while ((get_next_line(w->fd, &s) > 0) && ++(w->rows) >= 0 && !(w->cols = 0))
+	{
+		ptr = s;
 		while (*s)
 		{
 			if ((ft_isdigit(*s) || *s == '-') && (trav = head))
@@ -37,6 +40,9 @@ void		read_file(t_world *w)
 			}
 			s++;
 		}
+		free(ptr);
+	}
+	//free(s);
 	w->point_lst = w->point_lst->next + (w->rows++ * 0);
 	free(head);
 }
