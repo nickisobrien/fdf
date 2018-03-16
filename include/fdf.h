@@ -6,19 +6,18 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 17:12:25 by nobrien           #+#    #+#             */
-/*   Updated: 2018/03/15 17:50:39 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/03/16 14:45:55 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef __FDF_H
 # define __FDF_H
 
-# include "libft.h"
+# include "../libft/libft.h"
 # include "mlx.h"
 # include <mlx.h>
 # include <math.h>
 # include <fcntl.h>
-# define BUFF_SIZE 50
 
 typedef struct		s_point
 {
@@ -84,5 +83,6 @@ void				center(t_world *world);
 void				render(t_world *world);
 
 void				read_file(t_world *world);
+void				read_line(t_world *world, char *s);
 
 #endif

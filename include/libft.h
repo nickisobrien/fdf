@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 15:52:02 by nobrien           #+#    #+#             */
-/*   Updated: 2018/03/15 16:32:14 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/03/16 14:35:52 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# define BUFF_SIZE 100
 
 typedef struct		s_list
 {
