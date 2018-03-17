@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 11:25:58 by nobrien           #+#    #+#             */
-/*   Updated: 2018/03/16 18:15:35 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/03/16 18:23:20 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void		read_line(t_world *world, char *s)
 		world->cols = cols;
 	else if (world->cols != cols)
 		ft_error();
-
 }
 
 void		read_file(t_world *w)
