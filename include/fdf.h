@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 17:12:25 by nobrien           #+#    #+#             */
-/*   Updated: 2018/03/16 14:45:55 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/03/16 18:16:41 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../libft/libft.h"
 # include "mlx.h"
 # include <mlx.h>
+# include <stdio.h>
 # include <math.h>
 # include <fcntl.h>
 
@@ -52,7 +53,7 @@ typedef struct		s_world
 }					t_world;
 
 void				ft_close(void);
-void				ft_error(void);
+void				ft_error();
 void				ft_usage(void);
 
 void				mult_matrix(t_world *world, float mat[4][4]);
