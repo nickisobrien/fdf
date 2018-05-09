@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 10:35:05 by nobrien           #+#    #+#             */
-/*   Updated: 2018/03/16 18:14:57 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 23:06:45 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void		render(t_world *world)
 {
-	new_img(world);
 	set_mat(world);
 	adjust_roto(world);
 	center(world);
 	update_array(world);
+	clear_image(world);
 	draw(world);
 }
 
@@ -38,6 +38,7 @@ int			main(int argc, char **argv)
 	world.mlx = mlx_init();
 	world.window = mlx_new_window(world.mlx,
 		world.wwidth, world.wheight, world.file);
+	init_image(&world);
 	set_scale(&world);
 	init_cam(&world);
 	mlx_hook(world.window, 2, 0, key_pressed_hook, &world);

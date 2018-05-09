@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 11:37:06 by nobrien           #+#    #+#             */
-/*   Updated: 2018/03/15 16:57:08 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 22:56:15 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void	bresenham_x(t_world *world, t_point a, t_point b)
 	while (x <= b.x)
 	{
 		if (a.colored || b.colored)
-			mlx_pixel_put(world->mlx, world->window, x, y, 0xffffff);
+			img_pixel_put(world, x, y, 0xffffff);
 		else
-			mlx_pixel_put(world->mlx, world->window, x, y, 0x2eff05);
+			img_pixel_put(world, x, y, 0x2eff05);
 		slope_error_new += m_new + (x++ * 0);
 		if (slope_error_new >= 0 && !neg)
 			slope_error_new -= 2 * (b.x - a.x) + (y++ * 0);
@@ -59,9 +59,9 @@ void	bresenham_y(t_world *world, t_point a, t_point b)
 	while (y <= b.y)
 	{
 		if (a.colored || b.colored)
-			mlx_pixel_put(world->mlx, world->window, x, y, 0xffffff);
+			img_pixel_put(world, x, y, 0xffffff);
 		else
-			mlx_pixel_put(world->mlx, world->window, x, y, 0x2eff05);
+			img_pixel_put(world, x, y, 0x2eff05);
 		slope_error_new += m_new + (y++ * 0);
 		if (slope_error_new >= 0 && !neg)
 			slope_error_new -= 2 * (b.y - a.y) + (x++ * 0);
@@ -123,4 +123,5 @@ void	draw(t_world *world)
 		}
 		j++;
 	}
+	mlx_put_image_to_window(world->mlx, world->window, world->img, 0, 0);
 }

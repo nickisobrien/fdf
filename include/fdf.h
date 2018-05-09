@@ -6,7 +6,7 @@
 /*   By: nobrien <nobrien@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 17:12:25 by nobrien           #+#    #+#             */
-/*   Updated: 2018/03/16 18:23:07 by nobrien          ###   ########.fr       */
+/*   Updated: 2018/05/08 23:08:23 by nobrien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ typedef struct		s_point
 
 typedef struct		s_world
 {
+	void			*img;
+	void			*ptr;
+	int				bpp;
+	int				endian;
+	int				size_line;
 	int				wwidth;
 	int				wheight;
 	int				cols;
@@ -73,7 +78,9 @@ void				init_array(t_world *world);
 t_point				*init_point(int x, int y, int z, int color);
 void				update_array(t_world *world);
 
-void				new_img(t_world *world);
+void				init_image(t_world *w);
+void				img_pixel_put(t_world *w, int x, int y, int color);
+void				clear_image(t_world *w);
 
 void				set_scale(t_world *world);
 void				adjust_roto(t_world *world);
